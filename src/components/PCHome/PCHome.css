@@ -1,0 +1,56 @@
+.cardStylePC{
+    display: flex;
+    flex-direction: column;
+    background:url('../../assets/images/login.png');
+    background-repeat:repeat-y;
+    background-size: 100%;
+    height: 100vh;
+    width:100%
+}
+
+.pcContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10%;
+    width:100%
+}
+
+.inputClass{
+    background-color: antiquewhite;
+    height:33px;
+}
+
+.pStyle {
+    font-weight: 700;
+    background-color: brown;
+    color: wheat;
+    padding: 5px 5px 5px 0px;
+    text-align: center;
+}
+
+.headStyle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: brown;
+    text-shadow: 2px 2px wheat;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.submitStyle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.dateClass{
+    height:60px
+}
+
+.react-datepicker-ignore-onclickoutside,.inputCustom{
+    background-color: antiquewhite;
+    padding: 10px;
+}
