@@ -1,0 +1,17 @@
+{
+    "users":
+    [
+      {
+        "username":"JINDAL.SUMEET",
+        "password":"JINDAL@123"
+      },
+      {
+        "username":"PC1",
+        "password":"PC1@456"
+      },
+      {
+        "username":"PC2",
+        "password":"PC2@789"
+      }
+    ]
+    }

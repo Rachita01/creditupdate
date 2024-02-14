@@ -10,8 +10,21 @@ function Home() {
   const [password,setPassword] = useState("");
   const [list,setList] = useState([]);
   const navigate = useNavigate();
-
+  // const [users,setUsers] = useState([])
   const [pcdata,setPCData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = require("../../userslist.json")
+        setList(response.users);
+        console.log(response.users)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
   useEffect(() => {
     console.log(list,pcdata)
   },[list,pcdata])
@@ -22,9 +35,8 @@ function Home() {
       password
     };
 
-    if(list.newValue.length!==0 && (list.newValue.filter(item => item.username === data.user)).length !== 0){
-      const filteredData = list.newValue.filter(item => item.username === data.user);
-      if((filteredData[0].username === data.user) && (filteredData[0].password === data.password)){
+      const filteredData = list.filter(item => item.username === data.user);
+      if(filteredData[0] && (filteredData[0].username === data.user) && (filteredData[0].password === data.password)){
         if(data.user === "JINDAL.SUMEET"){
           navigate('/adminhome',{state:{data:`${JSON.stringify(pcdata)}`}})
         }
@@ -35,36 +47,11 @@ function Home() {
       else{
         alert("Please provide correct username and password")
       }
-    }else{
-    axios
-    .post("http://localhost:5000/users/users",data)
-    .then(() => {
-      console.log(data);
-      navigate("/pchome")
-    })
-    .catch((error) => {
-      console.log(error,data);
-      alert("An error happened. Please check console",error);
-    })
-  }
-  };
+    };
 
   useEffect(() => {
-    axios
-    .get('http://localhost:5000/users/users')
-    .then((response) => {
-      const newValue = response.data.data
-      console.log(newValue);
-      setList((prevList) => ({
-        ...prevList,newValue
-      }));
-    })
-    .catch((error) => {
-      console.log(error.message)
-    })
-
-    axios
-  .get('http://localhost:5000/creditupdate/creditupdate')
+  axios
+  .get('/.netlify/functions/creditupdate/creditupdate')
   .then((response) => {
     console.log(response.data.data);
     setPCData(response.data.data);
