@@ -47,7 +47,7 @@ function PCHome() {
 
         console.log(data)
         axios
-    .post('/.netlify/functions/creditupdate/creditupdate',data)
+    .post('/.netlify/functions/creditupdate',data)
     .then(() => {
       console.log(data);
       navigate("/")
