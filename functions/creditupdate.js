@@ -1,9 +1,16 @@
 const express = require('express');
+const serverless = require('serverless-http');
 const mongoose = require('mongoose');
 const router = express.Router();
 
 const app = express();
-const dataSchema = new mongoose.Schema({
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect("mongodb+srv://rachita31:Micro1234@mernapp.r9yo94d.mongodb.net/creditupdate?retryWrites=true&w=majority")
+
+// Schema and Model
+
+  const dataSchema = new mongoose.Schema({
     pcname:String,
     date:String,
     amount:String,
@@ -11,63 +18,40 @@ const dataSchema = new mongoose.Schema({
   })
  
   const PCData = mongoose.model('PCData',dataSchema);
-
-exports.handler = async (event, context) => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URL);
-
-    if (event.httpMethod === 'GET') {
-        try{
-            const pcdata = await PCData.find({});
-    
-            return response.status(200).json({
-                data:pcdata
-            });
-        }
-        catch(error){
-            console.log(error.message)
-            return response.status(500).send({message:error.message})
-        }
-    } else {
-        if(event.httpMethod === 'POST'){
-            console.log(request.body);
-            try{
-                const newPCData = {
-                    pcname:request.body.name,
-                    date:request.body.date,
-                    amount:request.body.amount,
-                    addedon:request.body.currentDate
-                }
-        
-                const pcdetail = await PCData.create(newPCData);
-        
-                return response.status(201).send(pcdetail)
-            }
-            catch(error){
-                console.log(error.message);
-                response.status(500).send({message:error.message});
-            }
-        }
-      return {
-        statusCode: 405,
-        body: JSON.stringify({ error: 'Method Not Allowed' })
-      };
-    }
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message })
-    };
-  }
-};
-
-app.use(express.json());
   
-  // Routes
 
-app.get("/creditupdate",(request,response) => {
-      console.log(request);
-      return response.status(134).send(JSON.stringify(response));
-    })
+  router.get('/creditupdate',async(request,response) => {
+    try{
+        const pcdata = await PCData.find({});
 
-app.use('/creditupdate',router)
+        return response.status(200).json({
+            data:pcdata
+        });
+    }
+    catch(error){
+        console.log(error.message)
+        return response.status(500).send({message:error.message})
+    }
+})
+  router.post("/creditupdate",async(request,response) => {
+    console.log(request.body);
+    try{
+        const newPCData = {
+            pcname:request.body.name,
+            date:request.body.date,
+            amount:request.body.amount,
+            addedon:request.body.currentDate
+        }
+
+        const pcdetail = await PCData.create(newPCData);
+
+        return response.status(201).send(pcdetail)
+    }
+    catch(error){
+        console.log(error.message);
+        response.status(500).send({message:error.message});
+    }
+})
+  
+  app.use('/.netlify/functions/creditupdate',router)
+  module.exports.handler = serverless(app);
