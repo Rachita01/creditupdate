@@ -73,7 +73,7 @@ function Home() {
   .catch((error) => {
     console.log(error.message)
   })
-},[])
+},[pcdata])
 
   const handleUserChange =(event) => {
      setUser(event.target.value);
