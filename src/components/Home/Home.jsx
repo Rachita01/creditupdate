@@ -51,7 +51,7 @@ function Home() {
 
   useEffect(() => {
   axios
-  .get('/.netlify/functions/creditupdate')
+  .get('/.netlify/functions/get_credit_update')
   .then((response) => {
     console.log(response.data.data);
     setPCData(response.data.data);
