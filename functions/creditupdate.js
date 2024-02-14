@@ -1,6 +1,8 @@
-// functions/getCreditUpdate.js
-
+const express = require('express');
 const mongoose = require('mongoose');
+const router = express.Router();
+
+const app = express();
 const dataSchema = new mongoose.Schema({
     pcname:String,
     date:String,
@@ -58,3 +60,14 @@ exports.handler = async (event, context) => {
     };
   }
 };
+
+app.use(express.json());
+  
+  // Routes
+
+app.get("/creditupdate",(request,response) => {
+      console.log(request);
+      return response.status(134).send(JSON.stringify(response));
+    })
+
+app.use('/creditupdate',router)
