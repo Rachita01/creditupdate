@@ -1,5 +1,7 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation,useNavigate } from 'react-router-dom';
+import ButtonComponent from '../ButtonComponent/ButtonComponent';
+import ExcelCreation from '../ExcelCreation/ExcelCreation';
 import './AdminHome.css'
 
 function AdminHome() {
@@ -7,7 +9,10 @@ function AdminHome() {
   const { data } = location.state || {};
   console.log(JSON.parse(data));
   const final_data = JSON.parse(data)
-
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("/")
+  }
   return (
     <div className='cardStylePC'>
         <p className='headStyle'>Details of All PC</p>
@@ -29,6 +34,11 @@ function AdminHome() {
                         </tr>))}
                 </tbody>
             </table>
+        </div>
+       
+        <div className='submitStyle'>
+        <ExcelCreation data={final_data}/>
+        <ButtonComponent label="Logout" change={handleSubmit} disabled={false}></ButtonComponent>
         </div>
     </div>
   )

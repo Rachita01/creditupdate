@@ -35,9 +35,9 @@ function Home() {
       password
     };
 
-      const filteredData = list.filter(item => item.username === data.user);
-      if(filteredData[0] && (filteredData[0].username === data.user) && (filteredData[0].password === data.password)){
-        if(data.user === "JINDAL.SUMEET"){
+      const filteredData = list.filter(item => item.username.toLowerCase() === data.user.toLowerCase());
+      if(filteredData[0] && (filteredData[0].username.toLowerCase() === data.user.toLowerCase()) && (filteredData[0].password.toLowerCase() === data.password.toLowerCase())){
+        if(data.user.toLowerCase() === "jindal.sumeet"){
           navigate('/adminhome',{state:{data:`${JSON.stringify(pcdata)}`}})
         }
         else{
