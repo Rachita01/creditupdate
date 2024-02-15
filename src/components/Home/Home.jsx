@@ -51,7 +51,7 @@ function Home() {
 
   useEffect(() => {
   axios
-  .get('http://localhost:5555/creditupdate')
+  .get('https://credit-update.onrender.com/creditupdate')
   .then((response) => {
     console.log(response.data.data);
     setPCData(response.data.data);

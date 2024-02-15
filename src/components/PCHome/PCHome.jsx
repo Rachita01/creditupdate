@@ -47,7 +47,7 @@ function PCHome() {
 
         console.log(data)
         axios
-    .post('http://localhost:5555/creditupdate',data)
+    .post('https://credit-update.onrender.com/creditupdate',data)
     .then(() => {
       console.log(data);
       navigate("/")
