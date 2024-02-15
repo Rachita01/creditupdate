@@ -47,7 +47,7 @@ function PCHome() {
 
         console.log(data)
         axios
-    .post('/.netlify/functions/creditupdate',data)
+    .post('http://localhost:5555/creditupdate',data)
     .then(() => {
       console.log(data);
       navigate("/")
