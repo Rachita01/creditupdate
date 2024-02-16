@@ -4,6 +4,8 @@ import ButtonComponent from '../ButtonComponent/ButtonComponent';
 // import usersData from '../../users.json';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function Home() {
   const [user,setUser] = useState("")
@@ -73,12 +75,14 @@ function Home() {
 
   return (
     <div className='cardStyle'>
+      <Header/>
       <div className='loginCard'>
         <h3 className='loginHead'>Login</h3>
         <label className='labelStyle'>Username</label><input type="text" className='userClass' value={user} onChange={handleUserChange}></input>
         <label className='labelStyle'>Password</label><input type="password" className='passwordClass' value={password} onChange={handlePassChange}></input>
         <ButtonComponent label="Submit" change={handleSubmit} disabled={!user || !password}></ButtonComponent>
       </div>
+      <Footer/>
     </div>
   )
 

@@ -1,7 +1,7 @@
 .cardStyle{
     display: flex;
-    flex-direction: row;
-    justify-content:center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     background:url('../../assets/images/login.png');
     background-repeat:repeat-y;

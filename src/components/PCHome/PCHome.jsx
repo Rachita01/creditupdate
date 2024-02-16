@@ -6,6 +6,8 @@ import './PCHome.css';
 import { useLocation } from 'react-router-dom';
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function PCHome() {
     const location = useLocation();
@@ -77,11 +79,12 @@ function PCHome() {
       }, [dateObj]);
   return (
     <div className='cardStylePC'>
-        <p className='headStyle'>Please enter following details</p>
+      <Header/>
+        {/* <p className='headStyle'>Please enter following details</p> */}
         <div className='pcContent'>
             <div className='dateComponent'>
-                <p className='pStyle'>DATE</p>
                 <div className='dateClass'>
+                   <label className='pStyle'>DATE</label> 
                     <DatePicker
                     selected={dateObj}
                     dateFormat="dd/MM/yyyy"
@@ -97,6 +100,7 @@ function PCHome() {
         <div className='submitStyle'>
         <ButtonComponent label="Submit" change={handleSubmit} disabled={false}></ButtonComponent>
         </div>
+        <Footer/>
     </div>
   )
 }

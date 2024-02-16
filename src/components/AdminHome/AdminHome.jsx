@@ -3,6 +3,8 @@ import { useLocation,useNavigate } from 'react-router-dom';
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
 import ExcelCreation from '../ExcelCreation/ExcelCreation';
 import './AdminHome.css'
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function AdminHome() {
   const location = useLocation();
@@ -15,6 +17,7 @@ function AdminHome() {
   }
   return (
     <div className='cardStylePC'>
+        <Header/>
         <p className='headStyle'>Details of All PC</p>
         <div className='adminContent'>
             <table className='tableStyle'>
@@ -40,6 +43,7 @@ function AdminHome() {
         <ExcelCreation data={final_data}/>
         <ButtonComponent label="Logout" change={handleSubmit} disabled={false}></ButtonComponent>
         </div>
+        <Footer/>
     </div>
   )
 }
