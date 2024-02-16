@@ -2,6 +2,11 @@
     "users":
     [
       {
+        "username": "JINDAL.SANJAY",
+        "password": "SJINDAL@123",
+        "pccategory": "ADMIN"
+      },
+      {
           "username": "JINDAL.SUMEET",
           "password": "JINDAL@123",
           "pccategory": "ADMIN"
