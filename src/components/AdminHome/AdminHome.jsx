@@ -8,12 +8,13 @@ import Footer from '../Footer/Footer';
 
 function AdminHome() {
   const location = useLocation();
-  const { data } = location.state || {};
+  const { data,adminData } = location.state || {};
   console.log(JSON.parse(data));
   const final_data = JSON.parse(data)
+  const admin_data = JSON.parse(adminData)
   const navigate = useNavigate();
   const handleSubmit = () => {
-    navigate("/")
+    navigate("/",{replace:true})
   }
   return (
     <div className='cardStylePC'>
@@ -28,7 +29,7 @@ function AdminHome() {
                     <th>Date Added On</th>
                 </thead>
                 <tbody>
-                    {final_data.map(item => (
+                    {admin_data.map(item => (
                         <tr key={item.id}>
                             <td>{item.pcname}</td>
                             <td>{item.date}</td>

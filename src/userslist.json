@@ -12,6 +12,11 @@
           "pccategory": "ADMIN"
       },
       {
+        "username":"DEMO1",
+        "password":"demo1",
+        "pccategory":"PCP"
+      },
+      {
           "username": "AAKASH",
           "password": "AAKASH@123",
           "pccategory": "PCP"

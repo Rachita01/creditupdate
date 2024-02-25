@@ -38,6 +38,7 @@ function PCHome() {
       };
       
     const handleSubmit = () => {
+      alert("Credit submitted")
         const currentDate = getCurrentDate();
         console.log(typeof(amount),typeof(date),typeof(name),typeof(currentDate))
         const data = {
@@ -52,7 +53,7 @@ function PCHome() {
     .post('https://credit-update.onrender.com/creditupdate',data)
     .then(() => {
       console.log(data);
-      navigate("/")
+      navigate("/",{replace:true})
     })
     .catch((error) => {
       console.log(error,data);
